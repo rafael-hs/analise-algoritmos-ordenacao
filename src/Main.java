@@ -20,7 +20,7 @@ import java.util.*;
 public class Main {
 	
 	private static void ExecutarSorts(String nomeDaPasta) throws IOException {
-		Bubble bubble = new Bubble();
+		Quick quick = new Quick();
 
 		List<Integer> lista = null;
 		File diretorioEntrada = new File("C:\\Users\\rafecu\\Documents\\eclipse-workspace\\PAA-Ordenacao\\src\\dados\\Entrada\\"+nomeDaPasta);
@@ -46,7 +46,7 @@ public class Main {
 			
 			long tempInicial = System.currentTimeMillis();
 			System.out.println(tempInicial);
-			bubble.bubbleSort(vetor);
+			quick.QuickSort(vetor,vetor[0] , vetor.length-1);
 			long tempFinal = System.currentTimeMillis();
 			System.out.println(tempFinal);
 			System.out.println(nomeDaPasta + " - Tempo em milisegundos: " + (tempFinal - tempInicial));
@@ -74,7 +74,7 @@ public class Main {
 		// Heap heap = new Heap();
 		// Counting cout = new Counting();
 
-		//ExecutarSorts("aleatorioDistinto");
+		ExecutarSorts("aleatorioDistinto");
 		ExecutarSorts("AleatorioRepetido");
 		ExecutarSorts("crescenteDistinto");
 		ExecutarSorts("crescenteRepetido");
