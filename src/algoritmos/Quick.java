@@ -3,7 +3,7 @@ package algoritmos;
 public class Quick {
 	
 	private int particiona(int array[], int comeco, int fim) {
-		int pivo = array[fim];
+		int pivo = array[comeco];
 		int i = (comeco - 1);
 		
 		for(int j = comeco; j < fim; j++) {
@@ -27,8 +27,8 @@ public class Quick {
 		if(comeco < fim) {
 			int particao = particiona(array, comeco, fim);
 			
-			QuickSort(array, comeco, particao-1);
-			QuickSort(array, particao+1, fim);
+			QuickSort(array, comeco, particao - 1);
+			QuickSort(array, particao + 1, fim);
 		}
 	}
 	
