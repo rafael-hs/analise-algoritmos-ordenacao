@@ -1,35 +1,44 @@
 package algoritmos;
 
+import java.util.Random;
+
 public class Quick {
 	
-	private int particiona(int array[], int comeco, int fim) {
-		int pivo = array[comeco];
-		int i = (comeco - 1);
-		
-		for(int j = comeco; j < fim; j++) {
-			if(array[j] <= pivo) {
-				i++;
-				
-				int aux = array[i];
-				array[i] = array[j];
-				array[j] = aux;
-			}
-		}
-		
-		int aux = array[i+1];
-		array[i+1] = array[fim];
-		array[fim] = aux;
-		
-		return i+1;
+	public void QuickSort(int[] vetor, int inicio, int fim)
+	{   
+	    if (inicio < fim - 1)
+	    {
+	        int position = inicio;
+	        int pivot = pickPivot(inicio, fim);
+
+	        if (pivot != fim - 1)
+	            swap(vetor, pivot, fim-1);
+
+	        for (int i = inicio; i < fim - 1; i++)
+	        {
+	            if (vetor[i] <= vetor[fim-1])
+	            {
+	                swap(vetor, position, i);
+	                position++;
+	            }
+	        }
+	        swap(vetor, position, fim-1);
+	        QuickSort(vetor, inicio, position);
+	        QuickSort(vetor, position + 1, fim);
+	    }
 	}
 
-	public void QuickSort(int array[], int comeco, int fim) {
-		if(comeco < fim) {
-			int particao = particiona(array, comeco, fim);
-			
-			QuickSort(array, comeco, particao - 1);
-			QuickSort(array, particao + 1, fim);
-		}
+	//[esquerda,direita)
+	private int pickPivot(int esquerda, int direita)
+	{	 Random rand = new Random();
+	     return rand.nextInt(direita-esquerda) + esquerda; 
+	}
+
+	private void swap(int[] nums, int comeco, int fim)
+	{
+	    int troca = nums[fim];
+	    nums[fim] = nums[comeco];
+	    nums[comeco] = troca;
 	}
 	
 }

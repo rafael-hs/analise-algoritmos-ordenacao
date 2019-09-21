@@ -20,7 +20,7 @@ import java.util.*;
 public class Main {
 	
 	private static void ExecutarSorts(String nomeDaPasta) throws IOException {
-		Heap heap = new Heap();
+		Counting couting = new Counting();
 
 		List<Integer> lista = null;
 		File diretorioEntrada = new File("C:\\Users\\rafecu\\Documents\\eclipse-workspace\\PAA-Ordenacao\\src\\dados\\Entrada\\"+nomeDaPasta);
@@ -45,12 +45,14 @@ public class Main {
 			}
 			
 			long tempInicial = System.currentTimeMillis();
-			System.out.println(tempInicial);
-			heap.Heapsort(vetor);
+			//System.out.println(tempInicial);
+			couting.CountingSort(vetor, vetor.length);
 			long tempFinal = System.currentTimeMillis();
-			System.out.println(tempFinal);
-			System.out.println(nomeDaPasta + " - Tempo em milisegundos: " + (tempFinal - tempInicial));
-			
+			//System.out.println(tempFinal);
+			System.out.println(nomeDaPasta + " - Tempo em milisegundos: " + (tempFinal - tempInicial) + " " + arquivosEntrada[i].getName());
+//			for(int v = 0; i < vetor.length; v++) {
+//				System.out.println(vetor[v]);				
+//			}
 			File diretorioSaida = new File("C:\\Users\\rafecu\\Documents\\eclipse-workspace\\PAA-Ordenacao\\src\\dados\\Saida\\"+nomeDaPasta);
 			File[] arquivosSaida = diretorioSaida.listFiles();
 			
